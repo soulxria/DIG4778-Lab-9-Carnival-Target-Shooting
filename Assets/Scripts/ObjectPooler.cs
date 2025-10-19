@@ -4,13 +4,16 @@ using System.Collections.Generic;
 public class ObjectPooler : MonoBehaviour
 {
     public static ObjectPooler Instance { get; private set; }
-    public GameObject bullet;
+    public GameObject bulletPrefab;
 
     private Queue<GameObject> bullets = new Queue<GameObject>();
+
+    [SerializeField] private int bulletPoolSize;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     private void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;
@@ -24,22 +27,21 @@ public class ObjectPooler : MonoBehaviour
 
     private void Start()
     {
-        MakePool();
+        MakeBulletPool();
     }
 
-    private void MakePool()
+    private void MakeBulletPool()
     {
-        GameObject tempObj;
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < bulletPoolSize; i++)
         {
-            tempObj = bullet;
+            GameObject tempObj = Instantiate(bulletPrefab);
             tempObj.transform.SetParent(transform);
             bullets.Enqueue(tempObj);
             tempObj.SetActive(false);
         }
     }
 
-    public GameObject GetObject()
+    public GameObject GetBullet()
     {
         if (bullets.Count != 0)
         {
@@ -54,7 +56,7 @@ public class ObjectPooler : MonoBehaviour
         
     }
 
-    public void ReturnObject(GameObject obj)
+    public void ReturnBullet(GameObject obj)
     {
         obj.SetActive(false);
         bullets.Enqueue(obj);
