@@ -9,8 +9,12 @@ public class TargetBuilder : MonoBehaviour
 
     private TargetBuilder()
     {
-
     }
+
+    public void SetSpeed(float speed) { Speed = speed; }
+    public void SetPointValue(int points) { PointValue = points; }
+    public void SetSize(Vector3 size) { Size = size; }
+    public void SetColor(Color color) { Color = color; }
 
     public class Builder
     {

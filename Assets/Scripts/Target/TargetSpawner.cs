@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject targetPrefab;
+    [SerializeField] public GameObject targetPrefab;
     [SerializeField] private GameObject smallTargetSpawn;
     [SerializeField] private GameObject mediumTargetSpawn;
     [SerializeField] private GameObject largeTargetSpawn;

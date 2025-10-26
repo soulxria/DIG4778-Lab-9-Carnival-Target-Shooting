@@ -7,7 +7,6 @@ public class TargetManager : MonoBehaviour
     TargetBuilder targetBuilder;
     private int pointValue;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
